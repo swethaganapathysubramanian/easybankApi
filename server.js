@@ -19,8 +19,18 @@ app.get('/', (req, res) => {
     res.send("Hello");
 })
 
+app.get('/invite', (req, res) => {
+    let totalData;
+    db('invites').count('serial').then(function (total) {
+        totalData = total[0].serial
+    })
+    console.log("Data:", totalData);
+
+
+})
+
 app.post('/invite', (req, res) => {
-    let totalData = 0
+    let totalData;
     // const user = {
     //     name: 'sally',
     //     email: 'email'
@@ -30,8 +40,8 @@ app.post('/invite', (req, res) => {
    //res.send("helloo");
    // console.log(`App running on port`);
     //res.send(req.body);
-     db('invites').count('serial as CNT').then(function(total){
-        totalData = total[0].CNT
+     db('invites').count('serial').then(function(total){
+        totalData = total[0].serial
      })
      console.log("Data:",totalData);
 
