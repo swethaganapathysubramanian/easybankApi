@@ -23,7 +23,15 @@ app.get('/', (req, res) => {
 
 app.post('/invite', (req, res) => {
 
-     res.send(req.body);
+    // const user = {
+    //     name: 'sally',
+    //     email: 'email'
+    // }
+    // res.send(user);
+    // console.log('1')
+   //res.send("helloo");
+   // console.log(`App running on port`);
+    res.send(req.body);
 
     db('invites').insert({
         name:req.body.name,
