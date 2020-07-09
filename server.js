@@ -30,13 +30,13 @@ app.post('/invite', (req, res) => {
    //res.send("helloo");
    // console.log(`App running on port`);
     //res.send(req.body);
-     db('invites').count('id as CNT').then(function(total){
+     db('invites').count('serial as CNT').then(function(total){
         totalData = total.count
      })
      console.log(totalData);
     
     db('invites').insert({
-        id:totalData+1,
+        serial:totalData+1,
         name:req.body.name,
         email:req.body.email
     }).then(console.log)
