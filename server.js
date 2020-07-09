@@ -34,12 +34,13 @@ app.post('/invite', (req, res) => {
         totalData = total.count
      })
      console.log(totalData);
-    
+     totalData +=1;
+
     db('invites').insert({
-        serial:totalData+1,
+        serial:totalData,
         name:req.body.name,
         email:req.body.email
-    }).then(console.log)
+    }).then(res.status(200).json("Success! Invite will be sent :)"))
     .catch(err=>res.status(400).json(err))
 })
 
