@@ -31,13 +31,12 @@ app.post('/invite', (req, res) => {
    // console.log(`App running on port`);
     //res.send(req.body);
      db('invites').count('serial as CNT').then(function(total){
-        totalData = total.count
+        totalData = total[0].CNT
      })
-     console.log(totalData);
-     totalData +=1;
+     console.log("Data:",totalData);
 
     db('invites').insert({
-        serial:totalData,
+        serial:totalData + 1,
         name:req.body.name,
         email:req.body.email
     }).then(res.status(200).json("Success! Invite will be sent :)"))
