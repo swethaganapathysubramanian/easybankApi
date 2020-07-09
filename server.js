@@ -19,13 +19,12 @@ app.get('/', (req, res) => {
     res.send("Hello");
 })
 
-
 app.post('/invite', (req, res) => {
 
     db('invites').insert({
         name:req.body.name,
         email:req.body.email
-    }).then((res) => res.status(200).json("Success! Invite will be sent :)"))
+    }).then(res.status(200).json("Success! Invite will be sent :)"))
     .catch(err=>res.status(400).json(err))
 })
 
