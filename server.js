@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
 })
 
 app.post('/invite', (req, res) => {
-
+    let totalData = 0
     // const user = {
     //     name: 'sally',
     //     email: 'email'
@@ -30,8 +30,13 @@ app.post('/invite', (req, res) => {
    //res.send("helloo");
    // console.log(`App running on port`);
     //res.send(req.body);
-
+     db('invites').count('id as CNT').then(function(total){
+        totalData = total.count
+     })
+     console.log(totalData);
+    
     db('invites').insert({
+        id:totalData+1,
         name:req.body.name,
         email:req.body.email
     }).then(console.log)
