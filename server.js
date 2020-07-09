@@ -19,37 +19,13 @@ app.get('/', (req, res) => {
     res.send("Hello");
 })
 
-app.get('/invite', (req, res) => {
-    let totalData;
-    db('invites').count('serial').then(function (total) {
-        totalData = total[0].serial
-    })
-    console.log("Data:", totalData);
-
-
-})
 
 app.post('/invite', (req, res) => {
-    let totalData;
-    // const user = {
-    //     name: 'sally',
-    //     email: 'email'
-    // }
-    // res.send(user);
-    // console.log('1')
-   //res.send("helloo");
-   // console.log(`App running on port`);
-    //res.send(req.body);
-     db('invites').count('serial').then(function(total){
-        totalData = total[0].serial
-     })
-     console.log("Data:",totalData);
 
     db('invites').insert({
-        serial:totalData + 1,
         name:req.body.name,
         email:req.body.email
-    }).then(res.status(200).json("Success! Invite will be sent :)"))
+    }).then((res) => res.status(200).json("Success! Invite will be sent :)"))
     .catch(err=>res.status(400).json(err))
 })
 
