@@ -29,7 +29,7 @@ app.post('/invite', (req, res) => {
     // console.log('1')
    //res.send("helloo");
    // console.log(`App running on port`);
-    res.send(req.body);
+    //res.send(req.body);
 
     db('invites').insert({
         name:req.body.name,
